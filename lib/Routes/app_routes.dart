@@ -1,22 +1,21 @@
-// ignore_for_file: prefer_const_constructors
-import 'package:flappy_bird/Layouts/Pages/page_game.dart';
-import 'package:flappy_bird/Layouts/Pages/page_settings.dart';
 import 'package:flutter/material.dart';
-import '../Layouts/Pages/page_rate_us.dart';
-import '../Layouts/Pages/page_start_screen.dart';
-import '../Resources/strings.dart';
+import 'package:minecraft_fly_game/Layouts/Pages/page_game.dart';
+import 'package:minecraft_fly_game/Layouts/Pages/page_rate_us.dart';
+import 'package:minecraft_fly_game/Layouts/Pages/page_settings.dart';
+import 'package:minecraft_fly_game/Layouts/Pages/page_start_screen.dart';
+import 'package:minecraft_fly_game/Resources/strings.dart';
 
 class AppRoute {
   Route? generateRoute(RouteSettings settings) {
     switch (settings.name) {
       case Str.home:
-        return MaterialPageRoute(builder: (_) => StartScreen());
+        return MaterialPageRoute(builder: (_) => const StartScreen());
       case Str.gamePage:
-        return MaterialPageRoute(builder: (_) => GamePage());
+        return MaterialPageRoute(builder: (_) => const GamePage());
       case Str.rateUs:
-        return MaterialPageRoute(builder: (_) => RateUs());
+        return MaterialPageRoute(builder: (_) => const RateUs());
       case Str.settings:
-        return MaterialPageRoute(builder: (_) => Settings());
+        return MaterialPageRoute(builder: (_) => const Settings());
       default:
         _errorRoute();
     }
@@ -27,10 +26,10 @@ class AppRoute {
       builder: (context) {
         return Scaffold(
           appBar: AppBar(
-            title: Text("Error Page"),
+            title: const Text("Error Page"),
             backgroundColor: Colors.redAccent,
           ),
-          body: Center(
+          body: const Center(
             child: Text("Error"),
           ),
         );

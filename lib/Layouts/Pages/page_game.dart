@@ -1,18 +1,17 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_constructors_in_immutables, avoid_unnecessary_containers, avoid_print
 import 'dart:async';
-import 'package:flappy_bird/Layouts/Pages/page_start_screen.dart';
-import 'package:flappy_bird/Layouts/Widgets/widget_bird.dart';
-import 'package:flappy_bird/Layouts/Widgets/widget_barrier.dart';
-import 'package:flappy_bird/Layouts/Widgets/widget_cover.dart';
+
 import 'package:flutter/material.dart';
-import 'package:lottie/lottie.dart';
-import '../../Database/database.dart';
-import '../../Global/constant.dart';
-import '../../Global/functions.dart';
-import '../../Resources/strings.dart';
+import 'package:minecraft_fly_game/Database/database.dart';
+import 'package:minecraft_fly_game/Global/constant.dart';
+import 'package:minecraft_fly_game/Global/functions.dart';
+import 'package:minecraft_fly_game/Layouts/Pages/page_start_screen.dart';
+import 'package:minecraft_fly_game/Layouts/Widgets/widget_barrier.dart';
+import 'package:minecraft_fly_game/Layouts/Widgets/widget_bird.dart';
+import 'package:minecraft_fly_game/Layouts/Widgets/widget_cover.dart';
+import 'package:minecraft_fly_game/Resources/strings.dart';
 
 class GamePage extends StatefulWidget {
-  GamePage({Key? key}) : super(key: key);
+  const GamePage({super.key});
   @override
   State<GamePage> createState() => _GamePageState();
 }
@@ -33,45 +32,68 @@ class _GamePageState extends State<GamePage> {
                   Bird(yAxis, birdWidth, birdHeight),
                   // Tap to play text
                   Container(
-                    alignment: Alignment(0, -0.3),
+                    alignment: const Alignment(0, -0.3),
                     child: myText(
-                        gameHasStarted ? '' : 'TAP TO START', Colors.white, 25),
+                      gameHasStarted ? '' : 'TAP TO START',
+                      Colors.white,
+                      25,
+                    ),
                   ),
-                  Barrier(barrierHeight[0][0], barrierWidth, barrierX[0], true),
                   Barrier(
-                      barrierHeight[0][1], barrierWidth, barrierX[0], false),
-                  Barrier(barrierHeight[1][0], barrierWidth, barrierX[1], true),
+                    barrierHeight[0][0],
+                    barrierWidth,
+                    barrierX[0],
+                    true,
+                  ),
                   Barrier(
-                      barrierHeight[1][1], barrierWidth, barrierX[1], false),
+                    barrierHeight[0][1],
+                    barrierWidth,
+                    barrierX[0],
+                    false,
+                  ),
+                  Barrier(
+                    barrierHeight[1][0],
+                    barrierWidth,
+                    barrierX[1],
+                    true,
+                  ),
+                  Barrier(
+                    barrierHeight[1][1],
+                    barrierWidth,
+                    barrierX[1],
+                    false,
+                  ),
                   Positioned(
                     bottom: 1,
                     right: 1,
                     left: 1,
-                    child: Container(
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: [
-                          Text(
-                            "Score : $score",
-                            style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 30,
-                                fontFamily: "Magic4"),
-                          ), // Best TEXT
-                          Text("Best : $topScore",
-                              style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 30,
-                                  fontFamily: "Magic4")),
-                        ],
-                      ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        Text(
+                          "Score : $score",
+                          style: const TextStyle(
+                            color: Colors.white,
+                            fontSize: 30,
+                            fontFamily: "Magic4",
+                          ),
+                        ), // Best TEXT
+                        Text(
+                          "Best : $topScore",
+                          style: const TextStyle(
+                            color: Colors.white,
+                            fontSize: 30,
+                            fontFamily: "Magic4",
+                          ),
+                        ),
+                      ],
                     ),
                   ),
                 ],
               ),
             ),
           ),
-          Expanded(
+          const Expanded(
             flex: 1,
             child: Cover(),
           ),
@@ -91,7 +113,7 @@ class _GamePageState extends State<GamePage> {
   //Start Game Function:
   void startGame() {
     gameHasStarted = true;
-    Timer.periodic(Duration(milliseconds: 35), (timer) {
+    Timer.periodic(const Duration(milliseconds: 35), (timer) {
       height = gravity * time * time + velocity * time;
       setState(() {
         yAxis = initialHeight - height;
@@ -118,7 +140,7 @@ class _GamePageState extends State<GamePage> {
       time += 0.032;
     });
     /* <  Calculate Score  > */
-    Timer.periodic(Duration(seconds: 2), (timer) {
+    Timer.periodic(const Duration(seconds: 2), (timer) {
       if (birdIsDead()) {
         // Todo : save the top score in the database  <---
         write("score", topScore);
@@ -178,17 +200,15 @@ class _GamePageState extends State<GamePage> {
           shape:
               RoundedRectangleBorder(borderRadius: BorderRadius.circular(18)),
           title: myText("..Oops", Colors.blue[900], 35),
-          actionsPadding: EdgeInsets.only(right: 8, bottom: 8),
-          content: Container(
-            child: Image.asset("assets/pics/loos.png", fit: BoxFit.cover),
-          ),
+          actionsPadding: const EdgeInsets.only(right: 8, bottom: 8),
+          content: Image.asset("assets/images/loos.png", fit: BoxFit.cover),
           actions: [
             gameButton(() {
               resetGame();
               Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => StartScreen(),
+                    builder: (context) => const StartScreen(),
                   ));
             }, "Exit", Colors.grey),
             gameButton(() {

@@ -8,5 +8,5 @@ class Str {
       " columns of green pipes without hitting them";
 
   static String image = "0";
-  static String bird = "assets/pics/bird.png";
+  static String bird = "assets/images/bird.png";
 }

@@ -1,24 +1,23 @@
-// ignore_for_file: prefer_const_constructors
-
-import 'package:flappy_bird/Database/database.dart';
-import 'package:flappy_bird/Global/functions.dart';
 import 'package:flutter/material.dart';
-
-import '../../Global/constant.dart';
+import 'package:minecraft_fly_game/Database/database.dart';
+import 'package:minecraft_fly_game/Global/constant.dart';
+import 'package:minecraft_fly_game/Global/functions.dart';
 
 class DifficultySettings extends StatelessWidget {
-  const DifficultySettings({Key? key}) : super(key: key);
+  const DifficultySettings({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin:
-          EdgeInsets.only(bottom: MediaQuery.of(context).size.height * 0.026),
+      margin: EdgeInsets.only(
+        bottom: MediaQuery.of(context).size.height * 0.026,
+      ),
       child: Column(
         children: [
           Container(
-              margin: EdgeInsets.symmetric(vertical: 10),
-              child: myText("Difficulty", Colors.black, 20)),
+            margin: const EdgeInsets.symmetric(vertical: 10),
+            child: myText("Difficulty", Colors.black, 20),
+          ),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
