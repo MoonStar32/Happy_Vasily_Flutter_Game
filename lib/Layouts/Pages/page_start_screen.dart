@@ -1,14 +1,13 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, prefer_const_constructors_in_immutables
-import 'package:flappy_bird/Layouts/Widgets/widget_bird.dart';
-import 'package:flappy_bird/Resources/strings.dart';
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
-import '../../Global/constant.dart';
-import '../../Global/functions.dart';
-import '../Widgets/widget_gradient _button.dart';
+import 'package:minecraft_fly_game/Global/constant.dart';
+import 'package:minecraft_fly_game/Global/functions.dart';
+import 'package:minecraft_fly_game/Layouts/Widgets/widget_bird.dart';
+import 'package:minecraft_fly_game/Layouts/Widgets/widget_gradient_button.dart';
+import 'package:minecraft_fly_game/Resources/strings.dart';
 
 class StartScreen extends StatefulWidget {
-  const StartScreen({Key? key}) : super(key: key);
+  const StartScreen({super.key});
   @override
   State<StartScreen> createState() => _StartScreenState();
 }
@@ -57,7 +56,7 @@ class _StartScreenState extends State<StartScreen> {
 Column _buttons() {
   return Column(
     children: [
-      Button(
+      const Button(
         buttonType: "text",
         height: 60,
         width: 278,
@@ -90,7 +89,7 @@ Column _buttons() {
 
 class AboutUs extends StatelessWidget {
   final Size size;
-  AboutUs({required this.size, Key? key}) : super(key: key);
+  const AboutUs({required this.size, super.key});
 
   @override
   Widget build(BuildContext context) {

@@ -1,5 +1,3 @@
-// ignore_for_file: prefer_const_constructors
-
 import 'package:audioplayers/audioplayers.dart';
 
 /// SCORE Variables calculated in function [startGame] in [GamePage]

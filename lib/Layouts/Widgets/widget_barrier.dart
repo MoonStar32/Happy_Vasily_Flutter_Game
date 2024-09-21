@@ -1,5 +1,3 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_constructors_in_immutables, use_key_in_widget_constructors
-
 import 'package:flutter/material.dart';
 
 class Barrier extends StatelessWidget {
@@ -8,7 +6,13 @@ class Barrier extends StatelessWidget {
   final bool isTop;
   final double direction;
 
-  Barrier(this.barrierHeight, this.barrierWidth, this.direction, this.isTop);
+  const Barrier(
+    this.barrierHeight,
+    this.barrierWidth,
+    this.direction,
+    this.isTop, {
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -16,14 +20,14 @@ class Barrier extends StatelessWidget {
     return AnimatedContainer(
       alignment: Alignment((2 * direction + barrierWidth) / (2 - barrierWidth),
           isTop ? 1.1 : -1.1),
-      duration: Duration(milliseconds: 0),
+      duration: const Duration(milliseconds: 0),
       child: Container(
         height: (size.height) / (4 * barrierHeight) / 2,
         width: size.width * barrierWidth / 2,
         decoration: BoxDecoration(
-          color: Color.fromARGB(255, 222, 222, 222),
-          border:
-              Border.all(width: 10, color: Color.fromARGB(255, 146, 146, 146)),
+          color: const Color.fromARGB(255, 222, 222, 222),
+          border: Border.all(
+              width: 10, color: const Color.fromARGB(255, 146, 146, 146)),
           borderRadius: BorderRadius.circular(16),
         ),
       ),

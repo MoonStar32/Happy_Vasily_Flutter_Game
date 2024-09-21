@@ -1,13 +1,10 @@
-// ignore_for_file: prefer_const_constructors
-
-import 'package:flappy_bird/Database/database.dart';
 import 'package:flutter/material.dart';
-
-import '../../Global/constant.dart';
-import '../../Global/functions.dart';
+import 'package:minecraft_fly_game/Database/database.dart';
+import 'package:minecraft_fly_game/Global/constant.dart';
+import 'package:minecraft_fly_game/Global/functions.dart';
 
 class MusicSettings extends StatefulWidget {
-  const MusicSettings({Key? key}) : super(key: key);
+  const MusicSettings({super.key});
 
   @override
   State<MusicSettings> createState() => _MusicSettingsState();
@@ -17,11 +14,11 @@ class _MusicSettingsState extends State<MusicSettings> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(bottom: 10),
+      margin: const EdgeInsets.only(bottom: 10),
       child: Column(
         children: [
           Container(
-            margin: EdgeInsets.symmetric(vertical: 10),
+            margin: const EdgeInsets.symmetric(vertical: 10),
             child: myText("Music", Colors.black, 20),
           ),
           Row(
@@ -32,16 +29,20 @@ class _MusicSettingsState extends State<MusicSettings> {
                     write("audio", true);
                     await player.resume();
                   },
-                  child: Icon(
+                  child: const Icon(
                     Icons.music_note_rounded,
                     size: 40,
                   )),
               GestureDetector(
-                  onTap: () async {
-                    write("audio", false);
-                    await player.pause();
-                  },
-                  child: Icon(Icons.music_off_rounded, size: 40)),
+                onTap: () async {
+                  write("audio", false);
+                  await player.pause();
+                },
+                child: const Icon(
+                  Icons.music_off_rounded,
+                  size: 40,
+                ),
+              ),
             ],
           ),
         ],
